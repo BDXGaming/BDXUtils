@@ -5,12 +5,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.RegisteredServiceProvider;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.UUID;
 
 public class playerDisplayName {
 
-    private final Chat vaultChat;
+    private Chat vaultChat;
     private String prefixPlaceholder = "{% PREFIX %}";
     private String namePlaceholder = "{% PLAYERNAME %}";
     private String suffixPlaceholder = "{% SUFFIX %}";
@@ -18,10 +20,28 @@ public class playerDisplayName {
     private boolean translateColors = true;
     private char colorSymbol = '&';
 
+    /**
+     * Creates an empty instance of playerDisplayName. Will not support any vault features.
+     */
     public playerDisplayName(){
         vaultChat = null;
     }
 
+    /**
+     * Can create an instance using an instance of the Plugin calling the method. Will gather Vault chat when called
+     * @param plugin JavaPlugin
+     */
+    public playerDisplayName(JavaPlugin plugin){
+        RegisteredServiceProvider<Chat> rsp = plugin.getServer().getServicesManager().getRegistration(Chat.class);
+        if (rsp != null) {
+            vaultChat = rsp.getProvider();
+        }
+    }
+
+    /**
+     * Creates a new instance of the playerDisplayName class using default formatting
+     * @param chat Chat
+     */
     public playerDisplayName(Chat chat){
         this.vaultChat = chat;
     }
@@ -37,11 +57,41 @@ public class playerDisplayName {
         this.nameFormat = nameFormat;
     }
 
+    /**
+     * Converts the colors within prefixes to Bukkit ChatColors
+     * @param name String
+     * @return name String
+     */
     private String translateColors(String name){
         if(this.translateColors){
             return ChatColor.translateAlternateColorCodes(this.colorSymbol, name);
         }
         return name;
+    }
+
+    /**
+     * Creates a player displayname using the name format
+     * @param prefix String
+     * @param name String
+     * @param suffix String
+     * @return formattedName String
+     */
+    private String formatName(String prefix, String name, String suffix){
+        String formattedName = nameFormat;
+
+        if(formattedName.contains(prefixPlaceholder)){
+            formattedName = formattedName.replace(prefixPlaceholder, prefix);
+        }
+
+        if(formattedName.contains(namePlaceholder)){
+            formattedName = formattedName.replace(namePlaceholder, name);
+        }
+
+        if(formattedName.contains(suffixPlaceholder)){
+            formattedName = formattedName.replace(suffixPlaceholder, suffix);
+        }
+
+        return formattedName;
     }
 
     /**
@@ -53,8 +103,7 @@ public class playerDisplayName {
         if(vaultChat == null){
             return p.getDisplayName();
         }
-
-        return translateColors(vaultChat.getPlayerPrefix(p) + p.getName() + vaultChat.getPlayerSuffix(p));
+        return translateColors(formatName(vaultChat.getPlayerPrefix(p),p.getName(),vaultChat.getPlayerSuffix(p)));
     }
 
     /**
@@ -68,7 +117,7 @@ public class playerDisplayName {
             return p.getName();
         }
 
-        return translateColors(vaultChat.getPlayerPrefix(world, p) + p.getName() + vaultChat.getPlayerSuffix(world, p));
+        return translateColors(formatName(vaultChat.getPlayerPrefix(world, p), p.getName(), vaultChat.getPlayerSuffix(world, p)));
     }
 
     /**
