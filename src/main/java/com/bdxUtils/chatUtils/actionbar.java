@@ -1,4 +1,4 @@
-package me.bdx.chatUtils;
+package com.bdxUtils.chatUtils;
 
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;

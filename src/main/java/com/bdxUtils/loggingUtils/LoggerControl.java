@@ -1,4 +1,4 @@
-package me.bdx.loggingUtils;
+package com.bdxUtils.loggingUtils;
 
 import java.util.logging.Logger;
 

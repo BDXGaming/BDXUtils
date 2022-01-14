@@ -1,4 +1,4 @@
-package me.bdx.exceptions;
+package com.bdxUtils.exceptions;
 
 public class PlayerNotFound extends Exception {
 

@@ -1,4 +1,4 @@
-package me.bdx.timeUtils;
+package com.bdxUtils.timeUtils;
 
 public class formatTimeConvters {
 

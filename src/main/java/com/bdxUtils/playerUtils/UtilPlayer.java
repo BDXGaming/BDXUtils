@@ -1,6 +1,6 @@
-package me.bdx.playerUtils;
+package com.bdxUtils.playerUtils;
 
-import me.bdx.exceptions.PlayerNotFound;
+import com.bdxUtils.exceptions.PlayerNotFound;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import org.bukkit.entity.Player;

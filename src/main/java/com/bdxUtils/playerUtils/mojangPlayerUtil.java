@@ -1,4 +1,4 @@
-package me.bdx.playerUtils;
+package com.bdxUtils.playerUtils;
 
 import java.util.UUID;
 import java.util.regex.Pattern;

@@ -1,4 +1,4 @@
-package me.bdx.playerUtils;
+package com.bdxUtils.playerUtils;
 
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
