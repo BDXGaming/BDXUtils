@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import org.shanerx.mojang.Mojang;
 import org.shanerx.mojang.PlayerProfile;
 
-public class mojangPlayerUtil {
+public class MojangPlayerUtil {
 
     private static final Mojang mojang = new Mojang();
 

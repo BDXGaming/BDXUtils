@@ -4,7 +4,7 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
 
-public class actionbar {
+public class Actionbar {
 
     /**
      * Sends the given text as an actionbar to the specified player using the Spigot api

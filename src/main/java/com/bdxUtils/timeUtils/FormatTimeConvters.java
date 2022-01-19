@@ -1,6 +1,6 @@
 package com.bdxUtils.timeUtils;
 
-public class formatTimeConvters {
+public class FormatTimeConvters {
 
     private String minutePlaceholder = "m";
     private String hourPlaceholder = "hr";
@@ -9,7 +9,7 @@ public class formatTimeConvters {
     /**
      * Creates a new instance of formatTimeConverters with default time placeholders (m, hr, d)
      */
-    public formatTimeConvters(){}
+    public FormatTimeConvters(){}
 
     /**
      * Creates a new instance of formatTimeConverters with the given time unit placeholders
@@ -17,7 +17,7 @@ public class formatTimeConvters {
      * @param hourPlaceholder String
      * @param dayPlaceholder String
      */
-    public formatTimeConvters(String minutePlaceholder, String hourPlaceholder, String dayPlaceholder){
+    public FormatTimeConvters(String minutePlaceholder, String hourPlaceholder, String dayPlaceholder){
         this.dayPlaceholder = dayPlaceholder;
         this.hourPlaceholder = hourPlaceholder;
         this.minutePlaceholder = minutePlaceholder;

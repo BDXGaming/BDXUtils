@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.UUID;
 
-public class playerDisplayName {
+public class PlayerDisplayName {
 
     private Chat vaultChat;
     private String prefixPlaceholder = "{% PREFIX %}";
@@ -23,7 +23,7 @@ public class playerDisplayName {
     /**
      * Creates an empty instance of playerDisplayName. Will not support any vault features.
      */
-    public playerDisplayName(){
+    public PlayerDisplayName(){
         vaultChat = null;
     }
 
@@ -31,7 +31,7 @@ public class playerDisplayName {
      * Can create an instance using an instance of the Plugin calling the method. Will gather Vault chat when called
      * @param plugin JavaPlugin
      */
-    public playerDisplayName(JavaPlugin plugin){
+    public PlayerDisplayName(JavaPlugin plugin){
         RegisteredServiceProvider<Chat> rsp = plugin.getServer().getServicesManager().getRegistration(Chat.class);
         if (rsp != null) {
             vaultChat = rsp.getProvider();
@@ -42,7 +42,7 @@ public class playerDisplayName {
      * Creates a new instance of the playerDisplayName class using default formatting
      * @param chat Chat
      */
-    public playerDisplayName(Chat chat){
+    public PlayerDisplayName(Chat chat){
         this.vaultChat = chat;
     }
 
@@ -52,7 +52,7 @@ public class playerDisplayName {
      * @param chat Chat
      * @param nameFormat String
      */
-    public playerDisplayName(Chat chat, String nameFormat){
+    public PlayerDisplayName(Chat chat, String nameFormat){
         this.vaultChat = chat;
         this.nameFormat = nameFormat;
     }
